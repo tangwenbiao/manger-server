@@ -12,6 +12,7 @@
     <java.source.version>1.8</java.source.version>
     <java.target.version>1.8</java.target.version>
     <swagger.version>2.9.2</swagger.version>
+    <lombok.version>1.18.10</lombok.version>
   </properties>
 
 
@@ -35,6 +36,13 @@
       <scope>test</scope>
     </dependency>
 
+    <!--lombok-->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+      <scope>provided</scope>
+    </dependency>
     <!--swagger -->
     <!--swagger2 spring-->
 
@@ -61,10 +69,10 @@
     </dependency>
 
     <!--security-->
-    <dependency>
+   <!-- <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
-    </dependency>
+    </dependency>-->
   </dependencies>
 
   <build>
