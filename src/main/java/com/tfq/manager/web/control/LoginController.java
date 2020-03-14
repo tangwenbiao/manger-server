@@ -1,7 +1,11 @@
 package com.tfq.manager.web.control;
 
+import com.tfq.manager.web.model.request.LoginRequestVO;
+import com.tfq.manager.web.model.response.LoginResponseVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,14 +25,22 @@ public class LoginController {
 
   @ApiOperation(value = "登录")
   @RequestMapping(value = "login", method = RequestMethod.POST)
-  public void toLogin(@RequestBody String name) {
-    System.out.println(name);
+  public LoginResponseVO toLogin(@RequestBody LoginRequestVO loginRequestVO) {
+    LoginResponseVO loginResponseVO=new LoginResponseVO();
+    loginResponseVO.setName("测试");
+    loginResponseVO.setAvatar("https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
+    loginResponseVO.setIntroduction("I am a super administrator");
+    List<String> roles=new ArrayList<>();
+    roles.add("admin");
+    loginResponseVO.setRoles(roles);
+    return loginResponseVO;
   }
 
   @ApiOperation(value = "获取权限信息")
   @RequestMapping(value = "getAuth", method = RequestMethod.POST)
-  public void getAuth(@RequestBody String name) {
+  public String getAuth(@RequestBody String name) {
     System.out.println(name);
+    return name;
   }
 
 }

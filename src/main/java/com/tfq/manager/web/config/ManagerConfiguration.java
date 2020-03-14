@@ -3,6 +3,7 @@ package com.tfq.manager.web.config;
 import com.tfq.manager.web.config.intercept.LoginInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
@@ -28,6 +29,11 @@ public class ManagerConfiguration extends WebMvcConfigurationSupport {
         .excludePathPatterns("/login/login")
         .excludePathPatterns("/test/**");
     super.addInterceptors(registry);
+  }
+
+  @Override
+  public void addCorsMappings(CorsRegistry registry) {
+    registry.addMapping("/**/*").allowedOrigins("*");
   }
 
 }
