@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <properties resource="application.properties"></properties>
+  <!--数据库驱动 -->
+  <context id="MysqlTables" targetRuntime="MyBatis3">
+
+    <commentGenerator>
+      <property name="suppressDate" value="true"/>
+      <property name="suppressAllComments" value="false"/>
+    </commentGenerator>
+    <!--数据库链接地址账号密码 -->
+    <jdbcConnection driverClass="${jdbc.mysql.driver}"
+      connectionURL="${mysql.url}"
+      userId="${mysql.username}" password="${mysql.password}">
+    </jdbcConnection>
+    <javaTypeResolver>
+      <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+      <property name="forceBigDecimals" value="false"/>
+      <property name="useJSR310Types" value="true"/>
+    </javaTypeResolver>
+    
+    <!--生成Model类存放位置 -->
+    <javaModelGenerator
+      targetPackage="com.tfq.manager.dao.model"
+      targetProject="src/main/java">
+      <property name="enableSubPackages" value="true"/>
+      <property name="trimStrings" value="true"/>
+    </javaModelGenerator>
+
+    <!--&lt;!&ndash;生成映射文件存放位置 &ndash;&gt;-->
+    <sqlMapGenerator
+      targetPackage="mybatis/sql-map"
+      targetProject="src/main/resources">
+      <property name="enableSubPackages" value="true"/>
+    </sqlMapGenerator>
+
+    <!--&lt;!&ndash;生成Dao类存放位置 &ndash;&gt;-->
+    <javaClientGenerator type="XMLMAPPER"
+      targetPackage="com.tfq.manager.dao.mapper"
+      targetProject="src/main/java">
+      <property name="enableSubPackages" value="true"/>
+    </javaClientGenerator>
+
+    <table tableName="user"
+      domainObjectName="UserDO" enableCountByExample="true"
+      enableUpdateByExample="true" enableDeleteByExample="true"
+      enableSelectByExample="true" selectByExampleQueryId="true">
+      <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+
+  </context>
+</generatorConfiguration>
