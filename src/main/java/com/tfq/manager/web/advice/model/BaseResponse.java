@@ -1,4 +1,4 @@
-package com.tfq.manager.web.advice;
+package com.tfq.manager.web.advice.model;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;

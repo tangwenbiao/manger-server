@@ -1,6 +1,7 @@
 package com.tfq.manager.web.advice;
 
 import com.google.gson.Gson;
+import com.tfq.manager.web.advice.model.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /**
- * @author: wangwei
+ * @author: TangFenQi
  * @description: 返回值统一封装
  * @date：19-5-8 下午2:39
  */
