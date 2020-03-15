@@ -4,6 +4,7 @@ import com.tfq.manager.web.model.request.LoginRequestVO;
 import com.tfq.manager.web.model.response.LoginResponseVO;
 import com.tfq.manager.web.model.response.UserInfoResponseVO;
 import com.tfq.manager.web.support.TokenSupport;
+import com.tfq.manager.web.support.UserSupport;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.ArrayList;
@@ -59,5 +60,11 @@ public class LoginController {
   @RequestMapping(value = "toException",method = RequestMethod.POST)
   public String toException(){
     throw new RuntimeException("测试系统异常");
+  }
+
+  @ApiOperation(value = "用户登出")
+  @RequestMapping(value = "logout", method = RequestMethod.POST)
+  public void toLogout(){
+    System.out.println(UserSupport.get()+":登出!");
   }
 }

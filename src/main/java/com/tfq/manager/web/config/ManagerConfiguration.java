@@ -1,5 +1,6 @@
 package com.tfq.manager.web.config;
 
+import com.google.gson.Gson;
 import com.tfq.manager.web.config.intercept.TokenValidInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -31,6 +32,7 @@ public class ManagerConfiguration extends WebMvcConfigurationSupport {
         .excludePathPatterns("/webjars/**")
         .excludePathPatterns("/api/v1/doc/**")
         .excludePathPatterns("/login/login")
+
         .excludePathPatterns("/error/**")
         .excludePathPatterns("/test/**");
     super.addInterceptors(registry);
@@ -43,6 +45,11 @@ public class ManagerConfiguration extends WebMvcConfigurationSupport {
     corsConfiguration.addAllowedMethod("*");
     corsConfiguration.setAllowCredentials(true);
     return corsConfiguration;
+  }
+
+  @Bean
+  public Gson gson(){
+    return new Gson();
   }
 
   @Bean
