@@ -40,6 +40,10 @@ public class ResponseAdvice implements ResponseBodyAdvice {
     if(o==null){
       return baseResponseBuilder.build();
     }
+    if(o instanceof String){
+      baseResponseBuilder.data(o);
+      return gson.toJson(baseResponseBuilder.build());
+    }
     baseResponseBuilder.data(o);
     return baseResponseBuilder.build();
   }
