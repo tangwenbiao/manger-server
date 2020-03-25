@@ -32,7 +32,7 @@ public class ManagerConfiguration extends WebMvcConfigurationSupport {
         .excludePathPatterns("/webjars/**")
         .excludePathPatterns("/api/v1/doc/**")
         .excludePathPatterns("/login/login")
-
+        .excludePathPatterns("/login/logout")
         .excludePathPatterns("/error/**")
         .excludePathPatterns("/test/**");
     super.addInterceptors(registry);

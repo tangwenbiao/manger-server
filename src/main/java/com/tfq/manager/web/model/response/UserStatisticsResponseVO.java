@@ -26,5 +26,6 @@ public class UserStatisticsResponseVO extends BaseStatisticsResponseVO {
     public UserStatisticsResponseVO() {
         super();
         this.setType("userInfo");
+        this.setTitle("用户活跃度");
     }
 }

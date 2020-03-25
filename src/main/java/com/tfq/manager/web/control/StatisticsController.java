@@ -1,6 +1,9 @@
 package com.tfq.manager.web.control;
 
+import com.tfq.manager.web.model.response.OrderStatisticsResponseVo;
+import com.tfq.manager.web.model.response.PanelStatisticsResponseVO;
 import com.tfq.manager.web.model.response.UserStatisticsResponseVO;
+import com.tfq.manager.web.support.UserSupport;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +21,6 @@ public class StatisticsController {
     @RequestMapping(value = "userInfo",method = RequestMethod.GET)
     public UserStatisticsResponseVO userInfo(){
         UserStatisticsResponseVO responseVO=new UserStatisticsResponseVO();
-        responseVO.setTitle("用户活跃度");
         //x刻度
         List<String> points=new ArrayList<>();
         points.add("三月");
@@ -42,5 +44,35 @@ public class StatisticsController {
         responseVO.setActiveUsers(activeUsers);
         responseVO.setInactiveUsers(inactiveUsers);
         return responseVO;
+    }
+
+    @ApiOperation(value = "统计信息")
+    @RequestMapping(value = "panelInfo",method = RequestMethod.POST)
+    public PanelStatisticsResponseVO panelInfo(){
+        PanelStatisticsResponseVO panelVO=new PanelStatisticsResponseVO();
+        System.out.println("获取用户信息:"+ UserSupport.get());
+        panelVO.setOrderTotal(50420);
+        panelVO.setUserTotal(1326);
+        return panelVO;
+    }
+
+    @ApiOperation(value = "订单统计信息")
+    @RequestMapping(value = "orderInfo",method = RequestMethod.GET)
+    public OrderStatisticsResponseVo orderInfo(){
+        OrderStatisticsResponseVo orderInfo=new OrderStatisticsResponseVo();
+        //x刻度
+        List<String> points=new ArrayList<>();
+        points.add("三月");
+        points.add("四月");
+        points.add("五月");
+        //订单数据
+        List<Integer> orderNumbers=new ArrayList<>();
+        orderNumbers.add(420);
+        orderNumbers.add(320);
+        orderNumbers.add(520);
+        //
+        orderInfo.setOrderNumbers(orderNumbers);
+        orderInfo.setXPoints(points);
+        return orderInfo;
     }
 }
